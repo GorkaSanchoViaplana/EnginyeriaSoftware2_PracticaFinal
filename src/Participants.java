@@ -1,5 +1,5 @@
 public class Participants {
-    private String Nom;
-    private String cognom;
-    private String NumFed;
+    protected String Nom;
+    protected String Cognom;
+    protected String NumFed;
 }
