@@ -1,13 +1,59 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+import java.util.Scanner;
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
+public class Main {
+
+    static final int EOS = 0;
+    public static void main(String[] args) {
+
+        Scanner entradaTeclat = new Scanner(System.in); // a java es fa aixi pels cin
+
+        mostrarMenu(); // mostrem les opcions
+        int opcio = entradaTeclat.nextInt(); // llegim de teclat
+
+        while(opcio != EOS) {
+            switch (opcio) {
+                case 1:
+                    enviarMissatge();
+                    break;
+
+                case 2:
+                    amonestarJugador();
+                    break;
+
+                case 3:
+                    canviarJugadors();
+                    break;
+            }
+
+            mostrarMenu();
+            opcio = entradaTeclat.nextInt();
+        }
+
+
+
+
+    }
+
+    private static void mostrarMenu() {
+        System.out.println("OPCIONS DEL PROGRAMA:");
+        System.out.println("1. Enviar missatge als jugadors de la pista");
+        System.out.println("2. Amonestar un jugador");
+        System.out.println("3. Canviar jugadors");
+    }
+
+    // opcio 1, falta implementar i posar els arguments
+    private static void enviarMissatge() {
+        System.out.println("ENVIAR MISSATGE, per implementar");
+    }
+
+    // opcio 2, falta implementar i posar els arguments
+    private static void amonestarJugador() {
+        System.out.println("AMONESTAR, per implementar");
+    }
+
+    // opcio 3, falta implementar i posar els arguments
+    private static void canviarJugadors() {
+        System.out.println("CANVIAR JUGADORS, per implementar");
     }
 }
+
