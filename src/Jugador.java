@@ -30,4 +30,5 @@ public class Jugador extends Participants implements ObserverEntrenador {
     public void actualitzaEntrenador(String missatge) {
         mostraMissatge(missatge);
     }
+
 }

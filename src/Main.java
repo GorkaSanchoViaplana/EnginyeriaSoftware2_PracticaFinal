@@ -5,6 +5,9 @@ public class Main {
     static final int EOS = 0;
     public static void main(String[] args) {
 
+        Equip equipLocal = new Equip();
+        Equip equipVisitant = new Equip();
+
         Scanner entradaTeclat = new Scanner(System.in); // a java es fa aixi pels cin
 
         mostrarMenu(); // mostrem les opcions
@@ -28,9 +31,6 @@ public class Main {
             mostrarMenu();
             opcio = entradaTeclat.nextInt();
         }
-
-
-
 
     }
 
