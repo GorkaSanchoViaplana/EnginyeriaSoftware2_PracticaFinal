@@ -34,4 +34,7 @@ public class Equip {
         this.Nom = nom;
         this.Localitat = localitat;
     }
+    public void enviarMissatge(){
+        EntrenadorEquip.donarOrdre();
+    }
 }

@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    static final int EOS = 0;
+    static final int EOS = 0; //End of support?? 😭💀
     public static void main(String[] args) {
 
         Equip Girona = new Equip("Girona","Girona");
@@ -23,6 +23,7 @@ public class Main {
             }
         }
 
+
         Scanner entradaTeclat = new Scanner(System.in); // a java es fa aixi pels cin
 
         mostrarMenu(); // mostrem les opcions
@@ -31,7 +32,11 @@ public class Main {
         while(opcio != EOS) {
             switch (opcio) {
                 case 1:
-                    enviarMissatge();
+                    System.out.println("Escull l'equip: Local (1) o Visitant (2)");
+
+
+
+                    enviarMissatge(); //Aixo ho haura de fer el entrenador del equip
                     break;
 
                 case 2:
@@ -46,10 +51,8 @@ public class Main {
             mostrarMenu();
             opcio = entradaTeclat.nextInt();
         }
-
-
-
-
+        System.out.println("Fi del programa!\uD83D\uDC80");
+        System.exit(0);
     }
 
     private static void mostrarMenu() {
