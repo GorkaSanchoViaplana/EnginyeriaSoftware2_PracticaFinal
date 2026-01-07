@@ -15,7 +15,7 @@ public class Main {
 
             Jugador j=new Jugador(""+i,"nom"+i,"cognom"+i,posicio);
             Jugador j2=new Jugador(""+12+i,"nom"+12+i,"cognom"+12+i,posicio);
-            
+
             if(i<7){
                 Girona.inserirJugador(j,"p");
                 Barcelona.inserirJugador(j2,"p");
@@ -37,10 +37,7 @@ public class Main {
                 case 1:
                     System.out.println("Escull l'equip: Local (1) o Visitant (2)");
                     Scanner equipOpcio = new Scanner(System.in);
-
                     int nequip = equipOpcio.nextInt();
-                    //sense controls de errors si ho fan malament surten del metode per pipiolos
-
                     if(nequip==1){
                         enviarMissatge(Girona);
                     }
@@ -48,7 +45,6 @@ public class Main {
                         enviarMissatge(Barcelona);
                     }
                     break;
-
                 case 2:
                     amonestarJugador();
                     break;
