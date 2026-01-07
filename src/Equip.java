@@ -12,4 +12,26 @@ public class Equip {
     public void canviarFormacio(String Formacio){
 
     }
+    public void inserirJugador(Jugador jug, String estat){
+        if(estat.equals("p")){
+            for(int i = 0; i < pista.length; i++){
+                if(pista[i] == null){
+                    pista[i] = jug;
+                }
+            }
+        } else if(estat.equals("b")){
+            for(int i = 0; i < banquillo.length; i++){
+                if(banquillo[i] == null){
+                    banquillo[i] = jug;
+                }
+            }
+        }
+
+    }
+    Equip(String nom, String localitat){
+        this.pista= new  Jugador[7];
+        this.banquillo= new  Jugador[5];
+        this.Nom = nom;
+        this.Localitat = localitat;
+    }
 }
