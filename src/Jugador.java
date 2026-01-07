@@ -22,6 +22,11 @@ public class Jugador extends Participants implements ObserverEntrenador {
         this.Nom = nom;
         this.Cognom = cognom;
     }
+
+    public void mostrarJugador(){
+        System.out.println("Num Federacio: "+NumFed + " Nom: "+Nom + " "+Cognom);
+    }
+
     public void mostraMissatge(String missatge){
         System.out.println("Numero Federacio "+NumFed+" "+"Missatge: "+missatge);
     }

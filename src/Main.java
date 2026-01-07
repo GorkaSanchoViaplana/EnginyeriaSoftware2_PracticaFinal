@@ -50,7 +50,7 @@ public class Main {
                     break;
 
                 case 3:
-                    canviarJugadors();
+                    canviarJugadors(entradaTeclat, Girona, Barcelona);
                     break;
             }
 
@@ -81,9 +81,23 @@ public class Main {
         System.out.println("AMONESTAR, per implementar");
     }
 
-    // opcio 3, falta implementar i posar els arguments
-    private static void canviarJugadors() {
-        System.out.println("CANVIAR JUGADORS, per implementar");
+    // opcio 3, intercanviar jugadors dels equips
+    private static void canviarJugadors(Scanner entradaTeclat, Equip local, Equip visitant) {
+        // en el nostre programa, el Girona és l'equip local i el Barcelona el visitant
+        System.out.println("CANVIAR JUGADORS");
+        System.out.println("ENTRA UN EQUIP (1: LOCAL; 2: VISITANT)");
+
+        int selEquip = entradaTeclat.nextInt();
+        if(selEquip==1){
+            local.mostarJugadorsEquip(); // GIRONA
+        }
+        else if(selEquip==2){
+            visitant.mostarJugadorsEquip(); // BCN
+        }
+
+
+
+
     }
 }
 
