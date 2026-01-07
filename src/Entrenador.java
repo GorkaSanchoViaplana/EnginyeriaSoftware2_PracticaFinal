@@ -40,6 +40,6 @@ public class Entrenador extends Participants implements ObserverArbitre,Observer
 
     @Override
     public void donaBaixa(ObserverEntrenador o) {
-
+        llistaObservers.remove(o);
     }
 }
