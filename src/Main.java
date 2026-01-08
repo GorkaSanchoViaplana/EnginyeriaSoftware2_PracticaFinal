@@ -4,11 +4,15 @@ public class Main {
 
     static final int EOS = 0; //End of support?? 😭💀
     public static void main(String[] args) {
-        Partit partit = new Partit(); //Basicament un placeholder no fa res i no crec que el fem servir
+        Partit partit = Partit.GetInstance(); //Basicament un placeholder no fa res i no crec que el fem servir
         Entrenador EntrenadorGirona = new Entrenador( "Miguel Angel","Sanchez Muñoz","321312312AA");
         Equip Girona = new Equip("Girona","Girona",EntrenadorGirona);
         Entrenador EntrenadorBarcelona = new Entrenador("Hansi","Flick","123123123BB");
         Equip Barcelona = new Equip("Barcelona","Barcelona",EntrenadorBarcelona);
+        partit.setEquips(Barcelona,Girona); //Important ferho en aquest ordre sino estem acabats 💀💀💀
+        Arbitre arbitreJefe = new Arbitre("Joan","Masaguer","1995380");
+        Arbitre aribtreSuplent = new  Arbitre("Ismael","El Hassad","1995381");
+        partit.setArbitres(arbitreJefe,aribtreSuplent);
 
         Posicio posicio=new Posicio(1,1,1);
         for(int i = 0; i<12; i++){
@@ -69,7 +73,7 @@ public class Main {
     }
 
     // opcio 1, falta implementar i posar els arguments
-    private static void enviarMissatge(Equip equip) {
+    private static void enviarMissatge(Equip equip) { //Ho fem fora de partit pq no afecta a aquest
         System.out.println("Entra el missatge a enviar");
         Scanner sc =  new Scanner(System.in);
         String missatge = sc.nextLine();
@@ -77,7 +81,8 @@ public class Main {
     }
 
     // opcio 2, falta implementar i posar els arguments
-    private static void amonestarJugador() {
+    private static void amonestarJugador() { //
+
         System.out.println("AMONESTAR, per implementar");
     }
 

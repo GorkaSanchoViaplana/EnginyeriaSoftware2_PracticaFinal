@@ -34,6 +34,9 @@ public class Jugador extends Participants implements ObserverEntrenador {
     @Override
     public void actualitzaEntrenador(String missatge) {
         mostraMissatge(missatge);
+    } //Una mica raro per un observer pero ho veig optim
+    public String getNumFed(){
+        return this.NumFed;
     }
 
 
