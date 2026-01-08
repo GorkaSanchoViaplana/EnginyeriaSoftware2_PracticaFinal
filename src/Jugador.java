@@ -35,9 +35,6 @@ public class Jugador extends Participants implements ObserverEntrenador {
     public void actualitzaEntrenador(String missatge) {
         mostraMissatge(missatge);
     }
-    public String getNumFed(){
-        return this.NumFed;
-    }
 
 
     @Override
