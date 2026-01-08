@@ -1,21 +1,29 @@
-import java.util.Date;
+import java.time.Instant;
+import java.util.ArrayList;
 
 public class Sancio {
     private String TipusSancio;
     private Jugador Sancionat;
-    private Date HoraExpulsio;
-    public Sancio(String targeta,Jugador j,Date data){
+    private Instant HoraExpulsio;
+    private String arbitIden;
+    public Sancio(String targeta,Jugador j,Instant data,String arbit){
         this.TipusSancio=targeta;
         this.Sancionat=j;
-        this.HoraExpulsio=data;
+        this.HoraExpulsio=data; //Aixo ho ignorarem completament a la practica
+        this.arbitIden=arbit;
     }
+
+    public Sancio() {
+
+    }
+
     public String getTipusSancio() {
         return TipusSancio;
     }
     public Jugador getSancionat() {
         return Sancionat;
     }
-    public Date getHoraExpulsio() {
+    public Instant getHoraExpulsio() {
         return HoraExpulsio;
     }
 }

@@ -1,14 +1,28 @@
 public class Equip {
-    private Jugador pista[];
-    private Jugador banquillo[];
+    private Jugador[] pista;
+    private Jugador[] banquillo;
+    private Jugador[] expulsats; //Pel que fa aquest programa, l'expulsio indicara que han estat executats i mai tornaran
     private String Nom;
     private String Localitat;
     private EsquemaDefensa EsqDefensa;
     private EsquemaAtac EsqAtac;
     private Entrenador EntrenadorEquip;
+    private int nFaltes;
+
+    Equip(String nom, String localitat,Entrenador entrenadorEquip){
+        this.pista= new  Jugador[7];
+        this.banquillo= new  Jugador[5];
+        this.expulsats= new  Jugador[12];
+        this.Nom = nom;
+        this.Localitat = localitat;
+        this.EntrenadorEquip = entrenadorEquip;
+        nFaltes=0;
+    }
+
     public Jugador retornaJugador(String numFed){
         return new Jugador();
     }
+
     public void canviarFormacio(String Formacio){
 
     }
@@ -47,23 +61,33 @@ public class Equip {
         String jugPista;
         String jugBanquillo;
         System.out.println("ENTRA UN JUGADOR DE LA PISTA");
-        //
+
 
         System.out.println("ENTRA UN JUGADOR DE LA BANCA PER SUBSTITUIR");
 
 
 
     }
-
-
-    Equip(String nom, String localitat,Entrenador entrenadorEquip){
-        this.pista= new  Jugador[7];
-        this.banquillo= new  Jugador[5];
-        this.Nom = nom;
-        this.Localitat = localitat;
-        this.EntrenadorEquip = entrenadorEquip; //No ens es important qui sigui el entrenador per tant fem un placeholder
+    public Jugador retornaJugPista(String numFed){
+        for(Jugador jug : pista){
+            if(jug.getNumFed().equals(numFed)){
+                return jug;
+            }
+        }
+        return null;
     }
+    public void expulsarJugador(String numFed){
+
+    }
+
     public void enviarMissatge(String miss){
         EntrenadorEquip.donarOrdre(miss);
+    }
+
+    public void afegirFalta(){
+        this.nFaltes++;
+    }
+    public int getNFaltes(){
+        return nFaltes;
     }
 }
