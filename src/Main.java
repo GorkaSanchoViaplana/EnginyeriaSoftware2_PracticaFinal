@@ -88,17 +88,24 @@ public class Main {
 
     // opcio 3, intercanviar jugadors dels equips
     private static void canviarJugadors(Scanner entradaTeclat, Equip local, Equip visitant) {
-        // en el nostre programa, el Girona és l'equip local i el Barcelona el visitant
         System.out.println("CANVIAR JUGADORS");
         System.out.println("ENTRA UN EQUIP (1: LOCAL; 2: VISITANT)");
 
         int selEquip = entradaTeclat.nextInt();
-        if(selEquip==1){
-            local.mostarJugadorsEquip(); // GIRONA
+        entradaTeclat.nextLine(); // Consumir el salt de línia pendent
+
+        Equip equipSeleccionat = null;
+
+        if (selEquip == 1) {
+            equipSeleccionat = local;
+            System.out.println("EQUIP LOCAL");
+        } else if (selEquip == 2) {
+            equipSeleccionat = visitant;
+            System.out.println("EQUIP VISITANT");
         }
-        else if(selEquip==2){
-            visitant.mostarJugadorsEquip(); // BCN
-        }
+
+        equipSeleccionat.mostarJugadorsEquip();
+        equipSeleccionat.intercanviarJugadors();
     }
 }
 
