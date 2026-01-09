@@ -4,12 +4,15 @@ public class Main {
 
     static final int EOS = 0; //End of support?? 😭💀
     public static void main(String[] args) {
-        Partit partit = Partit.GetInstance(); //Basicament un placeholder no fa res i no crec que el fem servir
+
+        Partit partit = Partit.GetInstance(); //Singleton momento
+
         Entrenador EntrenadorGirona = new Entrenador( "Miguel Angel","Sanchez Muñoz","321312312AA");
         Equip Girona = new Equip("Girona","Girona",EntrenadorGirona);
+
         Entrenador EntrenadorBarcelona = new Entrenador("Hansi","Flick","123123123BB");
         Equip Barcelona = new Equip("Barcelona","Barcelona",EntrenadorBarcelona);
-        partit.setEquips(Barcelona,Girona); //Important ferho en aquest ordre sino estem acabats 💀💀💀
+
         Arbitre arbitreJefe = new Arbitre("Joan","Masaguer","1995380");
         Arbitre aribtreSuplent = new  Arbitre("Ismael","El Hassad","1995381");
         partit.setArbitres(arbitreJefe,aribtreSuplent);
@@ -29,7 +32,7 @@ public class Main {
                 Barcelona.inserirJugador(j2,"b");
             }
         }
-
+        partit.setEquips(Barcelona,Girona); //Important ferho en aquest ordre sino estem acabats 💀💀💀
 
         Scanner entradaTeclat = new Scanner(System.in); // a java es fa aixi pels cin
 
@@ -43,16 +46,27 @@ public class Main {
                     Scanner equipOpcio = new Scanner(System.in);
                     int nequip = equipOpcio.nextInt();
                     if(nequip==1){
-                        enviarMissatge(Girona);
+                        enviarMissatge(partit,true);
                     }
                     else if(nequip==2){
-                        enviarMissatge(Barcelona);
+                        enviarMissatge(partit,false);
                     }
                     break;
                 case 2:
-                    amonestarJugador();
-                    break;
+                    System.out.println("Jugadors Locals al Camp");
+                    partit.mostrarJugadorsCamp(true);
+                    System.out.println("Jugadors Visitants al Camp");
+                    partit.mostrarJugadorsCamp(false);
 
+                    System.out.println("Vols expulsar un jugador local(1) o un jugador visitant(2)?");
+                    int local = entradaTeclat.nextInt();
+
+                    if(local==1){
+                        amonestarJugador(partit,true);
+                    }else if(local==2){
+                        amonestarJugador(partit,false);
+                    }
+                    break;
                 case 3:
                     canviarJugadors(entradaTeclat, Girona, Barcelona);
                     break;
@@ -73,17 +87,19 @@ public class Main {
     }
 
     // opcio 1, falta implementar i posar els arguments
-    private static void enviarMissatge(Equip equip) { //Ho fem fora de partit pq no afecta a aquest
+    private static void enviarMissatge(Partit p,boolean local) {
         System.out.println("Entra el missatge a enviar");
         Scanner sc =  new Scanner(System.in);
         String missatge = sc.nextLine();
-        equip.enviarMissatge(missatge);
+        p.enviarMissatge(local,missatge);
     }
 
     // opcio 2, falta implementar i posar els arguments
-    private static void amonestarJugador() { //
-
-        System.out.println("AMONESTAR, per implementar");
+    private static void amonestarJugador(Partit p,boolean local) { //
+        System.out.println("Entra el numFed del jugador a amonestar");
+        Scanner sc =  new Scanner(System.in);
+        String numFed = sc.nextLine();
+        p.gestionarExpulsio(local,numFed);
     }
 
     // opcio 3, intercanviar jugadors dels equips

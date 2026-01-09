@@ -21,10 +21,9 @@ public class Equip {
         this.EntrenadorEquip = entrenadorEquip;
         nFaltes=0;
     }
-
-    public Jugador retornaJugador(String numFed){
-        return new Jugador();
-    }
+    //public Jugador retornaJugador(String numFed){
+    //      return new Jugador();
+    //   }
 
     public void canviarFormacio(String Formacio){
 
@@ -58,10 +57,15 @@ public class Equip {
         for (Jugador jugador : banquillo) {
             jugador.mostrarJugador();
         }
-
     }
 
-    /*public Jugador retornaJugador(String numFed) {
+    public void mostrarJugadorsCamp(){
+        for (Jugador jugador : pista) {
+            jugador.mostrarJugador();
+        }
+    }
+
+    public Jugador retornaJugador(String numFed) {
         // Cerca a la pista
         for (Jugador j : pista) {
             if (j != null && j.getNumFed().equals(numFed)) {
@@ -75,7 +79,7 @@ public class Equip {
             }
         }
         return null;
-    }*/
+    }
 
     public void intercanviarJugadors() {
         Scanner scan = new Scanner(System.in);
@@ -125,7 +129,20 @@ public class Equip {
         return null;
     }
     public void expulsarJugador(String numFed){
+        int posPista = cercarJugador(pista, numFed);
+        if (posPista == -1) {
+            System.out.println("Jugador de la pista no trobat.");
+            return;
+        }
 
+        for(int j = 0; j < expulsats.length; j++){
+            if(expulsats[j] == null){
+                expulsats[j] = pista[posPista];
+                pista[posPista] = null;
+                System.out.println("S'ha expulsat al jugador amb dorsal "+expulsats[j].getNumFed()); //faig aqui el print pq aixi ho demana el enunciat
+                return;
+            }
+        }
     }
 
     public void enviarMissatge(String miss){
