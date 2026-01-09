@@ -103,6 +103,13 @@ public class Partit implements SubjectPartit,ObserverPilota,ObserverArbitre {
             equipRemot.mostrarJugadorsCamp();
         }
     }
+    public void intercanviarJugadors(Equip e, String JugPartit, String JugBanquillo)
+    {
+        e.intercanviarJugadors(JugPartit,JugBanquillo);
+        e.mostarJugadorsEquip();
+    }
+
+
     @Override
     public void donaAlta(ObserverPartit o) {
 
