@@ -58,7 +58,7 @@ public class Main {
                     System.out.println("Jugadors Visitants al Camp");
                     partit.mostrarJugadorsCamp(false);
 
-                    System.out.println("Vols expulsar un jugador local(1) o un jugador visitant(2)?");
+                    System.out.println("Vols amonestar un jugador local(1) o un jugador visitant(2)?");
                     int local = entradaTeclat.nextInt();
 
                     if(local==1){
