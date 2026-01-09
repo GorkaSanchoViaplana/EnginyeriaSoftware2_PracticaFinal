@@ -81,24 +81,15 @@ public class Equip {
         return null;
     }
 
-    public void intercanviarJugadors() {
-        Scanner scan = new Scanner(System.in);
+    public void intercanviarJugadors(String jugPista, String jugBanquillo) {
 
-        // Buscar jugador a la pista
-        System.out.println("ENTRA UN JUGADOR DE LA PISTA");
-        String jugPista = scan.nextLine();
         int posPista = cercarJugador(pista, jugPista);
-
         if (posPista == -1) {
             System.out.println("Jugador de la pista no trobat.");
             return;
         }
 
-        // Buscar jugador al banquillo
-        System.out.println("ENTRA UN JUGADOR DE LA BANCA PER SUBSTITUIR");
-        String jugBanquillo = scan.nextLine();
         int posBanquillo = cercarJugador(banquillo, jugBanquillo);
-
         if (posBanquillo == -1) {
             System.out.println("Jugador del banquillo no trobat.");
             return;
@@ -120,6 +111,7 @@ public class Equip {
         }
         return -1;
     }
+
     public Jugador retornaJugPista(String numFed){
         for(Jugador jug : pista){
             if(jug.getNumFed().equals(numFed)){
