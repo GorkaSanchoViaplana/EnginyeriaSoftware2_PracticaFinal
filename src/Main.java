@@ -10,15 +10,15 @@ public class Main {
         Entrenador EntrenadorBarcelona = new Entrenador("Hansi","Flick","123123123BB");
         Equip Barcelona = new Equip("Barcelona","Barcelona",EntrenadorBarcelona);
         partit.setEquips(Barcelona,Girona); //Important ferho en aquest ordre sino estem acabats 💀💀💀
-        Arbitre arbitreJefe = new Arbitre("Joan","Masaguer","1995380");
-        Arbitre aribtreSuplent = new  Arbitre("Ismael","El Hassad","1995381");
+        Arbitre arbitreJefe = new Arbitre("Gregorio","Iglesias","1995380");
+        Arbitre aribtreSuplent = new  Arbitre("Carles","Epsilon","1995381");
         partit.setArbitres(arbitreJefe,aribtreSuplent);
 
         Posicio posicio=new Posicio(1,1,1);
         for(int i = 0; i<12; i++){
 
             Jugador j=new Jugador(""+i,"nom"+i,"cognom"+i,posicio);
-            Jugador j2=new Jugador(""+12+i,"nom"+12+i,"cognom"+12+i,posicio);
+            Jugador j2=new Jugador(""+(12+i),"nom"+(12+i),"cognom"+(12+i),posicio);
 
             if(i<7){
                 Girona.inserirJugador(j,"p");
@@ -54,7 +54,7 @@ public class Main {
                     break;
 
                 case 3:
-                    canviarJugadors(entradaTeclat, Girona, Barcelona);
+                    canviarJugadors(entradaTeclat, Girona, Barcelona, partit);
                     break;
             }
 
@@ -87,12 +87,12 @@ public class Main {
     }
 
     // opcio 3, intercanviar jugadors dels equips
-    private static void canviarJugadors(Scanner entradaTeclat, Equip local, Equip visitant) {
+    private static void canviarJugadors(Scanner entradaTeclat, Equip local, Equip visitant, Partit p) {
         System.out.println("CANVIAR JUGADORS");
         System.out.println("ENTRA UN EQUIP (1: LOCAL; 2: VISITANT)");
 
         int selEquip = entradaTeclat.nextInt();
-        entradaTeclat.nextLine(); // Consumir el salt de línia pendent
+        entradaTeclat.nextLine();
 
         Equip equipSeleccionat = null;
 
@@ -102,10 +102,17 @@ public class Main {
         } else if (selEquip == 2) {
             equipSeleccionat = visitant;
             System.out.println("EQUIP VISITANT");
-        }
+        } else System.out.println("Equip incorrecte");
 
         equipSeleccionat.mostarJugadorsEquip();
-        equipSeleccionat.intercanviarJugadors();
+
+        System.out.println("ENTRA UN JUGADOR DE LA PISTA:");
+        String JugPartit = entradaTeclat.nextLine();
+
+        System.out.println("ENTRA UN JUGADOR DEL BANQUILLO:");
+        String JugBanquillo = entradaTeclat.nextLine();
+
+        p.intercanviarJugadors(equipSeleccionat, JugPartit, JugBanquillo);
     }
 }
 
