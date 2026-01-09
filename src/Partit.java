@@ -10,6 +10,7 @@ public class Partit implements SubjectPartit,ObserverPilota,ObserverArbitre {
     private Arbitre[] arbitres;
     private static Partit instance;
     private int maxGrogues;
+
     private Partit(){
         this.pilotaPartit = new Pilota();
         this.sancions = new ArrayList<Sancio>(256); //Millor fer un arrayList de tamany n
@@ -35,35 +36,26 @@ public class Partit implements SubjectPartit,ObserverPilota,ObserverArbitre {
         this.arbitres[0]=arbitrePrincipal;
         this.arbitres[1]=arbitreSuplent;
     }
-    public void GestionarSancions(Sancio s){
-
-    }
 
     public Posicio RetornaPosPilota(){
         Posicio p = new Posicio(1,1,1);
         return p;
     }
 
-    public void ExpulsarJugador(Jugador j){
-
-    }
-
-    public void GestionaExpulsio(){
-
-    }
 
     public Posicio retornaPosArbitre(){
         Posicio p = new Posicio(1,1,1);
         return p;
     }
 
-    public void gestionarSancio(Boolean Local,String numJugador){
+    public void gestionarExpulsio(Boolean Local,String numJugador){
         if(Local){
             SancionarJugador(equipLocal,numJugador);
         }else{
             SancionarJugador(equipRemot,numJugador);
         }
     }
+
     private void SancionarJugador(Equip eq,String numJugador){
 
         Jugador Sancionat =  eq.retornaJugador(numJugador);
@@ -74,18 +66,43 @@ public class Partit implements SubjectPartit,ObserverPilota,ObserverArbitre {
         Sancio sancio = arbitres[0].SancionarGroga(Sancionat);
         afegirFalta(sancio);
         eq.afegirFalta();
-        if(maxGrogues<eq.getNFaltes()){ //falta un OR per veure si el player ja tenia groga i ferlo fora directament
+        if(maxGrogues<eq.getNFaltes() || nFaltesJugador(Sancionat) >=2){ //falta un OR per veure si el player ja tenia groga i ferlo fora directament
             eq.expulsarJugador(numJugador);
         }
+        mostrarSancio(sancio);
+    }
+
+    private void mostrarSancio(Sancio sancio){
+        System.out.println("S'ha afegit una falta "+sancio.getTipusSancio()+" al jugador amb dorsal "+sancio.getSancionat().getNumFed()+" a l'hora "+sancio.getHoraExpulsio());
     }
     private void afegirFalta(Sancio falta){
         this.sancions.add(falta);
     }
-    public Jugador retornaJugador(String numfed){
-        Jugador j = new Jugador();
-        return j;
+    private int nFaltesJugador(Jugador Sancionat){
+        int nSancions=0;
+        for(Sancio sancio:this.sancions){
+            if(sancio.getSancionat().equals(Sancionat)){
+                nSancions++;
+            }
+        }
+        return nSancions;
     }
 
+    public void enviarMissatge(boolean local,String missatge){
+        if(local){
+            equipLocal.enviarMissatge(missatge);
+        }else{
+            equipRemot.enviarMissatge(missatge);
+        }
+    }
+
+    public void mostrarJugadorsCamp(boolean local){
+        if(local){
+            equipLocal.mostrarJugadorsCamp();
+        }else{
+            equipRemot.mostrarJugadorsCamp();
+        }
+    }
     public void intercanviarJugadors(Equip e, String JugPartit, String JugBanquillo)
     {
         e.intercanviarJugadors(JugPartit,JugBanquillo);
