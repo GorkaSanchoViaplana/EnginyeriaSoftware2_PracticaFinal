@@ -21,6 +21,7 @@ public class Jugador extends Participants implements ObserverEntrenador {
         this.NumFed = numfed;
         this.Nom = nom;
         this.Cognom = cognom;
+        this.EstaExpulsat=false;
     }
 
     public void mostrarJugador(){
@@ -35,9 +36,8 @@ public class Jugador extends Participants implements ObserverEntrenador {
     public void actualitzaEntrenador(String missatge) {
         mostraMissatge(missatge);
     } //Una mica raro per un observer pero ho veig optim
-    public String getNumFed(){
-        return this.NumFed;
-    }
+
+    public boolean getEstaExpulsat(){ return this.EstaExpulsat; }
 
 
     @Override
