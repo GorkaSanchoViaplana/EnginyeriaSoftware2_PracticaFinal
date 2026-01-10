@@ -51,17 +51,34 @@ public class Equip {
     public void mostarJugadorsEquip() {
         System.out.println("JUGADORS DE LA PISTA");
         for (Jugador jugador : pista) {
-            jugador.mostrarJugador();
+            if(jugador != null){
+                jugador.mostrarJugador();
+            }
+            else{
+                System.out.println("---Expulsat---");
+            }
         }
         System.out.println("JUGADORS DEL BANQUILLO");
         for (Jugador jugador : banquillo) {
-            jugador.mostrarJugador();
+            if(jugador != null){
+                jugador.mostrarJugador();
+            }
+            else{
+                System.out.println("---Expulsat---");
+            }
+
         }
     }
 
     public void mostrarJugadorsCamp(){
         for (Jugador jugador : pista) {
-            jugador.mostrarJugador();
+            if(jugador != null){
+                jugador.mostrarJugador();
+            }
+            else{
+                System.out.println("---Expulsat---");
+            }
+
         }
     }
 
