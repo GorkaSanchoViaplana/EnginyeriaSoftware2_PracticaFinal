@@ -95,7 +95,15 @@ public class Equip {
             return;
         }
 
+        if(banquillo[posBanquillo].getEstaExpulsat()){ // els jugadors de la pista no poden estar expulsats
+            System.out.println("Un dels jugadors està expulsat");
+            return;
+        }
+
         // Intercanviar jugadors
+        EntrenadorEquip.donaBaixa(pista[posPista]);
+        EntrenadorEquip.donaAlta(pista[posBanquillo]);
+        
         Jugador temp = pista[posPista];
         pista[posPista] = banquillo[posBanquillo];
         banquillo[posBanquillo] = temp;
