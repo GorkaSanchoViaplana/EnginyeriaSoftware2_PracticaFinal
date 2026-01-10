@@ -39,6 +39,9 @@ public class Jugador extends Participants implements ObserverEntrenador {
         return this.NumFed;
     }
 
+    public void Expulsar(){
+        this.EstaExpulsat=true;
+    }
 
     @Override
     public boolean equals(Object o){

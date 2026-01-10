@@ -40,6 +40,6 @@ public class Entrenador extends Participants implements ObserverArbitre,Observer
 
     @Override
     public void donaBaixa(ObserverEntrenador o) {
-        llistaObservers.remove(o);
+        llistaObservers.remove(o); //Aixo fa servir equals i per aquesta rao li fem overwrite a jugador
     }
 }
