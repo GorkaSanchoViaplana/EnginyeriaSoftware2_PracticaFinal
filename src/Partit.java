@@ -1,4 +1,3 @@
-import java.util.Observer;
 import java.util.ArrayList;
 public class Partit implements SubjectPartit,ObserverPilota,ObserverArbitre {
     private Pilota pilotaPartit;
@@ -48,26 +47,28 @@ public class Partit implements SubjectPartit,ObserverPilota,ObserverArbitre {
         return p;
     }
 
-    public void gestionarExpulsio(Boolean Local,String numJugador){
+    public void gestionarExpulsio(Boolean Local,String numJugador,int nArbitre ){
         if(Local){
-            SancionarJugador(equipLocal,numJugador);
+            SancionarJugador(equipLocal,numJugador,nArbitre-1);
         }else{
-            SancionarJugador(equipRemot,numJugador);
+            SancionarJugador(equipRemot,numJugador,nArbitre-1);
         }
     }
 
-    private void SancionarJugador(Equip eq,String numJugador){
+    private void SancionarJugador(Equip eq,String numJugador,int nArbitre){
 
         Jugador Sancionat =  eq.retornaJugador(numJugador);
         if(Sancionat==null){ //Control d'errors aixi ben duro
             System.out.println("El jugador de numFed"+numJugador+" no existeix");
             return; //Si no existeix el player poc podem fer
         }
-        Sancio sancio = arbitres[0].SancionarGroga(Sancionat);
+        Sancio sancio = arbitres[nArbitre].SancionarGroga(Sancionat);
         afegirFalta(sancio);
         eq.afegirFalta();
-        if(maxGrogues<eq.getNFaltes() || nFaltesJugador(Sancionat) >=2){ //falta un OR per veure si el player ja tenia groga i ferlo fora directament
-            eq.expulsarJugador(numJugador);
+        if(maxGrogues<eq.getNFaltes() || nFaltesJugador(Sancionat) ==2){ //falta un OR per veure si el player ja tenia groga i ferlo fora directament
+            eq.expulsarJugadorTemporalment(numJugador);
+        }else if(nFaltesJugador(Sancionat) >=3){ //No hauria de ser mes gran que 3 mai
+            eq.expulsarJugadorDefinitivament(numJugador);
         }
         mostrarSancio(sancio);
     }
@@ -96,11 +97,11 @@ public class Partit implements SubjectPartit,ObserverPilota,ObserverArbitre {
         }
     }
 
-    public void mostrarJugadorsCamp(boolean local){
+    public void mostrarJugadors(boolean local){
         if(local){
-            equipLocal.mostrarJugadorsCamp();
+            equipLocal.mostarJugadorsEquip();
         }else{
-            equipRemot.mostrarJugadorsCamp();
+            equipRemot.mostarJugadorsEquip();
         }
     }
     public void intercanviarJugadors(Equip e, String JugPartit, String JugBanquillo)

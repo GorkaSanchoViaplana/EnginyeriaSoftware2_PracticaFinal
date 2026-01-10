@@ -5,7 +5,7 @@ public class Main {
     static final int EOS = 0; //End of support?? 😭💀
     public static void main(String[] args) {
 
-        Partit partit = Partit.GetInstance(); //Singleton momento
+        Partit partit = Partit.GetInstance(); //Singleton momento 💔💔💔
 
         Entrenador EntrenadorGirona = new Entrenador( "Miguel Angel","Sanchez Muñoz","321312312AA");
         Equip Girona = new Equip("Girona","Girona",EntrenadorGirona);
@@ -54,9 +54,9 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("Jugadors Locals al Camp");
-                    partit.mostrarJugadorsCamp(true);
+                    partit.mostrarJugadors(true);
                     System.out.println("Jugadors Visitants al Camp");
-                    partit.mostrarJugadorsCamp(false);
+                    partit.mostrarJugadors(false);
 
                     System.out.println("Vols amonestar un jugador local(1) o un jugador visitant(2)?");
                     int local = entradaTeclat.nextInt();
@@ -75,7 +75,7 @@ public class Main {
             mostrarMenu();
             opcio = entradaTeclat.nextInt();
         }
-        System.out.println("Fi del programa!\uD83D\uDC80");
+        System.out.println("Fi del programa!"); //💔🥀
         System.exit(0);
     }
 
@@ -99,7 +99,13 @@ public class Main {
         System.out.println("Entra el numFed del jugador a amonestar");
         Scanner sc =  new Scanner(System.in);
         String numFed = sc.nextLine();
-        p.gestionarExpulsio(local,numFed);
+        System.out.println("Quin arbitre fica la falta (1 o 2)");
+        int nArbitreFalta = sc.nextInt();
+        if(nArbitreFalta!=1 || nArbitreFalta!=2){
+            System.out.println("Arbitre incorrecte");
+            return;
+        }
+        p.gestionarExpulsio(local,numFed,nArbitreFalta);
     }
 
     // opcio 3, intercanviar jugadors dels equips

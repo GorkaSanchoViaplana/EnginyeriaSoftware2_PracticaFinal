@@ -1,6 +1,3 @@
-import java.util.Objects;
-import java.util.Scanner;
-
 public class Equip {
     private Jugador[] pista;
     private Jugador[] banquillo;
@@ -14,7 +11,7 @@ public class Equip {
 
     Equip(String nom, String localitat,Entrenador entrenadorEquip){
         this.pista= new  Jugador[7];
-        this.banquillo= new  Jugador[5];
+        this.banquillo= new  Jugador[5+7];
         this.expulsats= new  Jugador[12];
         this.Nom = nom;
         this.Localitat = localitat;
@@ -66,7 +63,6 @@ public class Equip {
             else{
                 System.out.println("---Expulsat---");
             }
-
         }
     }
 
@@ -145,18 +141,40 @@ public class Equip {
         }
         return null;
     }
-    public void expulsarJugador(String numFed){
+    public void expulsarJugadorTemporalment(String numFed){
         int posPista = cercarJugador(pista, numFed);
-        if (posPista == -1) {
+        int posBanquillo = cercarJugador(banquillo, numFed); //Ho faig amb 2 pq encara q sigui ineficient no puc saber on esta el jugador
+        if (posPista == -1 &&  posBanquillo == -1) {
             System.out.println("Jugador de la pista no trobat.");
             return;
         }
+        else if(posBanquillo== -1){
+            for(int j = 0; j < banquillo.length; j++){
+                if(banquillo[j] == null){
+                    banquillo[j] = pista[posPista];
+                    pista[posPista] = null;
+                    System.out.println("S'ha expulsat al jugador amb dorsal "+banquillo[j].getNumFed()); //faig aqui el print pq aixi ho demana el enunciat
+                    banquillo[j].Expulsar();
+                    EntrenadorEquip.donaBaixa(banquillo[j]); //En teoria aixo hauria de funcionar
+                    return;
+                }
+            }
+        }
+        else{
+            banquillo[posBanquillo].Expulsar();
+        }
 
+    }
+    public void expulsarJugadorDefinitivament(String numFed){
+        int posBanquillo = cercarJugador(banquillo, numFed); //Tal i com funciona el programa, sempre estara al banquillo
+        if (posBanquillo == -1) {
+            System.out.println("Jugador de la pista no trobat.");
+            return;
+        }
         for(int j = 0; j < expulsats.length; j++){
             if(expulsats[j] == null){
-                expulsats[j] = pista[posPista];
-                pista[posPista] = null;
-                System.out.println("S'ha expulsat al jugador amb dorsal "+expulsats[j].getNumFed()); //faig aqui el print pq aixi ho demana el enunciat
+                expulsats[j] = banquillo[posBanquillo];
+                banquillo[posBanquillo] = null;
                 return;
             }
         }
