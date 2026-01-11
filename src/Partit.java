@@ -59,22 +59,22 @@ public class Partit implements SubjectPartit,ObserverPilota,ObserverArbitre {
 
         Jugador Sancionat =  eq.retornaJugador(numJugador);
         if(Sancionat==null){ //Control d'errors aixi ben duro
-            System.out.println("El jugador de numFed"+numJugador+" no existeix");
+            System.out.println("El jugador de dorsal "+numJugador+" no existeix a aquest equip");
             return; //Si no existeix el player poc podem fer
         }
-        Sancio sancio = arbitres[nArbitre].SancionarGroga(Sancionat);
+        Sancio sancio = arbitres[nArbitre].SancionarGroga(Sancionat); //La sancio la fica/crea el arbit
         afegirFalta(sancio);
         eq.afegirFalta();
+        mostrarSancio(sancio);
         if(maxGrogues<eq.getNFaltes() || nFaltesJugador(Sancionat) ==2){ //falta un OR per veure si el player ja tenia groga i ferlo fora directament
             eq.expulsarJugadorTemporalment(numJugador);
         }else if(nFaltesJugador(Sancionat) >=3){ //No hauria de ser mes gran que 3 mai
             eq.expulsarJugadorDefinitivament(numJugador);
         }
-        mostrarSancio(sancio);
     }
 
     private void mostrarSancio(Sancio sancio){
-        System.out.println("S'ha afegit una falta "+sancio.getTipusSancio()+" al jugador amb dorsal "+sancio.getSancionat().getNumFed()+" a l'hora "+sancio.getHoraExpulsio());
+        System.out.println("S'ha afegit una falta "+sancio.getTipusSancio()+" al jugador amb dorsal "+sancio.getSancionat().getNumFed()+" a l'hora "+sancio.getHoraExpulsio()+" pel arbit amb numero de federacio "+sancio.getArbitIden());
     }
     private void afegirFalta(Sancio falta){
         this.sancions.add(falta);
@@ -104,10 +104,15 @@ public class Partit implements SubjectPartit,ObserverPilota,ObserverArbitre {
             equipRemot.mostarJugadorsEquip();
         }
     }
-    public void intercanviarJugadors(Equip e, String JugPartit, String JugBanquillo)
+    public void intercanviarJugadors(boolean local, String JugPartit, String JugBanquillo)
     {
-        e.intercanviarJugadors(JugPartit,JugBanquillo);
-        e.mostarJugadorsEquip();
+        if(local){
+            equipLocal.intercanviarJugadors(JugPartit,JugBanquillo);
+            equipLocal.mostarJugadorsEquip();
+        }else{
+            equipRemot.intercanviarJugadors(JugPartit,JugBanquillo);
+            equipRemot.mostarJugadorsEquip();
+        }
     }
 
 

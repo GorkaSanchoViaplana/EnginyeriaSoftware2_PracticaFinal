@@ -29,7 +29,7 @@ public class Jugador extends Participants implements ObserverEntrenador {
     }
 
     public void mostraMissatge(String missatge){
-        System.out.println("Numero Federacio "+NumFed+" "+"Missatge: "+missatge);
+        System.out.println(this.Nom+" "+this.Cognom+" "+this.NumFed+": "+"Missatge Rebut: "+missatge);
     }
 
     @Override
