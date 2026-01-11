@@ -8,7 +8,12 @@ public class Equip {
     private EsquemaAtac EsqAtac;
     private Entrenador EntrenadorEquip;
     private int nFaltes;
-
+    Equip(){
+        this.pista= new  Jugador[7];
+        this.banquillo= new  Jugador[5+7];
+        this.expulsats= new  Jugador[12];
+        nFaltes=0;
+    }
     Equip(String nom, String localitat,Entrenador entrenadorEquip){
         this.pista= new  Jugador[7];
         this.banquillo= new  Jugador[5+7];
@@ -17,6 +22,15 @@ public class Equip {
         this.Localitat = localitat;
         this.EntrenadorEquip = entrenadorEquip;
         nFaltes=0;
+    }
+    public void setEntrenadorEquip(Entrenador entrenadorEquip){
+        this.EntrenadorEquip=entrenadorEquip;
+    }
+    public void setNom(String nom){
+        this.Nom=nom;
+    }
+    public void setLocalitat(String localitat){
+        this.Localitat=localitat;
     }
     //public Jugador retornaJugador(String numFed){
     //      return new Jugador();
@@ -59,9 +73,6 @@ public class Equip {
         for (Jugador jugador : banquillo) {
             if(jugador != null){
                 jugador.mostrarJugador();
-            }
-            else{
-                System.out.println("---Expulsat---");
             }
         }
     }
@@ -153,7 +164,7 @@ public class Equip {
                 if(banquillo[j] == null){
                     banquillo[j] = pista[posPista];
                     pista[posPista] = null;
-                    System.out.println("S'ha expulsat al jugador amb dorsal "+banquillo[j].getNumFed()); //faig aqui el print pq aixi ho demana el enunciat
+                    System.out.println("S'ha expulsat temporalment al jugador amb dorsal "+banquillo[j].getNumFed()); //faig aqui el print pq aixi ho demana el enunciat
                     banquillo[j].Expulsar();
                     EntrenadorEquip.donaBaixa(banquillo[j]); //En teoria aixo hauria de funcionar
                     return;
@@ -175,6 +186,7 @@ public class Equip {
             if(expulsats[j] == null){
                 expulsats[j] = banquillo[posBanquillo];
                 banquillo[posBanquillo] = null;
+                System.out.println("S'ha expulsat definitivament al jugador amb dorsal "+expulsats[j].getNumFed());
                 return;
             }
         }

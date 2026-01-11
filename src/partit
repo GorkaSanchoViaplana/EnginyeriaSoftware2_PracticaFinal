@@ -1,0 +1,34 @@
+EQUIP;Girona;Girona
+EQUIP;Barcelona;Barcelona
+
+ENTRENADOR;Girona;Miguel Angel;Sanchez Muñoz;321312312AA
+ENTRENADOR;Barcelona;Hansi;Flick;123123123BB
+
+ARBITRE;PRINCIPAL;Joan;Masaguer;1995380
+ARBITRE;SUPLENT;Ismael;El Hassad;1995381
+
+JUGADOR;Girona;1;Marc;Casas;p
+JUGADOR;Girona;2;Adria;Soler;p
+JUGADOR;Girona;3;Pau;Riera;p
+JUGADOR;Girona;4;Nil;Vidal;p
+JUGADOR;Girona;5;Eric;Gonzalez;p
+JUGADOR;Girona;6;Arnau;Costa;p
+JUGADOR;Girona;7;Pol;Serra;p
+JUGADOR;Girona;8;Jordi;Puig;b
+JUGADOR;Girona;9;Alex;Ferrer;b
+JUGADOR;Girona;10;Oriol;Molina;b
+JUGADOR;Girona;11;Roger;Navarro;b
+JUGADOR;Girona;12;David;Pons;b
+
+JUGADOR;Barcelona;13;Marc;Lopez;p
+JUGADOR;Barcelona;14;Sergi;Martinez;p
+JUGADOR;Barcelona;15;Ivan;Garcia;p
+JUGADOR;Barcelona;16;Lucas;Hernandez;p
+JUGADOR;Barcelona;17;Daniel;Ruiz;p
+JUGADOR;Barcelona;18;Victor;Morales;p
+JUGADOR;Barcelona;19;Javier;Santos;p
+JUGADOR;Barcelona;20;Carlos;Torres;b
+JUGADOR;Barcelona;21;Alberto;Cano;b
+JUGADOR;Barcelona;22;Ruben;Dominguez;b
+JUGADOR;Barcelona;23;Manuel;Iglesias;b
+JUGADOR;Barcelona;24;Fernando;Ortega;b

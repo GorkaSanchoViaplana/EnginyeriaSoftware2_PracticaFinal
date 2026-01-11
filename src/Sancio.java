@@ -26,4 +26,5 @@ public class Sancio {
     public Instant getHoraExpulsio() {
         return HoraExpulsio;
     }
+    public String getArbitIden() {return arbitIden;}
 }
