@@ -113,6 +113,14 @@ public class Main {
                     case "JUGADOR":
                         Posicio pos = new Posicio(1,1,1);
                         Jugador j = new Jugador(lineSplit[2],lineSplit[3],lineSplit[4],pos);
+                        Rol r = null;
+                        if(lineSplit.length > 6){
+                            r = retornaRol(lineSplit[6]);
+                        }else{ //Vale per alguna rao hi ha un jugador sense rol o algo aixi detecta el programa, fem aixo i ja
+                            //System.out.println("Jugador amb rol = null");
+                            r = retornaRol("banquillo"); //Farem que banquillo sigui un rol per defecte
+                        }
+                        j.canviaRol(r);
                         if(lineSplit[1].equals("Girona")){
                             Girona.inserirJugador(j,lineSplit[5]);
                         }else{
@@ -252,6 +260,9 @@ public class Main {
                 break;
             case "avancatd":
                 r = new AvancatD();
+                break;
+            case "banquillo":
+                r = new BanquilloRol();
                 break;
             default:
                 System.out.println("Rol no reconegut: " + nomRol);
