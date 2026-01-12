@@ -4,8 +4,6 @@ public class Equip {
     private Jugador[] expulsats; //Pel que fa aquest programa, l'expulsio indicara que han estat executats i mai tornaran
     private String Nom;
     private String Localitat;
-    private EsquemaDefensa EsqDefensa;
-    private EsquemaAtac EsqAtac;
     private Entrenador EntrenadorEquip;
     private int nFaltes;
     Equip(){
@@ -32,6 +30,7 @@ public class Equip {
     public void setLocalitat(String localitat){
         this.Localitat=localitat;
     }
+
     //public Jugador retornaJugador(String numFed){
     //      return new Jugador();
     //   }
@@ -126,7 +125,7 @@ public class Equip {
 
         // Intercanviar jugadors
         EntrenadorEquip.donaBaixa(pista[posPista]);
-        EntrenadorEquip.donaAlta(pista[posBanquillo]);
+        EntrenadorEquip.donaAlta(banquillo[posBanquillo]);
         
         Jugador temp = pista[posPista];
         pista[posPista] = banquillo[posBanquillo];

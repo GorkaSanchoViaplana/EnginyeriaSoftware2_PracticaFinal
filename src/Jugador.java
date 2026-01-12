@@ -50,4 +50,8 @@ public class Jugador extends Participants implements ObserverEntrenador {
         Jugador jugador = (Jugador) o;
         return NumFed.equals(jugador.NumFed);
     }
+    @Override
+    public int hashCode() {
+        return NumFed != null ? NumFed.hashCode() : 0;
+    }
 }

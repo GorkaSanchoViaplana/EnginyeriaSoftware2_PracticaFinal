@@ -1,7 +1,7 @@
 import java.util.Observer;
 import java.util.ArrayList;
 
-public class Entrenador extends Participants implements ObserverArbitre,ObserverPartit,SubjectEntrenador {
+public class Entrenador extends Participants implements SubjectEntrenador {
     //private Equip meuEquip;
     //private Partit partitJugant;
     private ArrayList<ObserverEntrenador> llistaObservers; //Nomes seran els que estan al camp
@@ -19,12 +19,6 @@ public class Entrenador extends Participants implements ObserverArbitre,Observer
         notifica(missatge);
     }
 
-    public void actualitzaArbitre(Posicio p){
-
-    }
-    public void actualitzaPartit(){
-
-    }
 
     @Override
     public void notifica(String missatge) {
@@ -35,11 +29,13 @@ public class Entrenador extends Participants implements ObserverArbitre,Observer
 
     @Override
     public void donaAlta(ObserverEntrenador o) {
-        llistaObservers.add(o);
+        if(!llistaObservers.contains(o)){
+            llistaObservers.add(o);
+        }
     }
 
     @Override
     public void donaBaixa(ObserverEntrenador o) {
-        llistaObservers.remove(o); //Aixo fa servir equals i per aquesta rao li fem overwrite a jugador
+        llistaObservers.remove(o);
     }
 }
