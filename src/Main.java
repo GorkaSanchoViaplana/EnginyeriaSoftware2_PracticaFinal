@@ -21,13 +21,13 @@ public class Main {
             switch (opcio) {
                 case 1:
                     System.out.println("Escull l'equip: Local (1) o Visitant (2)");
-                    Scanner equipOpcio = new Scanner(System.in);
-                    int nequip = equipOpcio.nextInt();
+                    int nequip = entradaTeclat.nextInt();
+                    entradaTeclat.nextLine();
                     if(nequip==1){
-                        enviarMissatge(partit,true);
+                        enviarMissatge(partit,true,entradaTeclat);
                     }
                     else if(nequip==2){
-                        enviarMissatge(partit,false);
+                        enviarMissatge(partit,false,entradaTeclat);
                     }
                     break;
                 case 2:
@@ -38,11 +38,11 @@ public class Main {
 
                     System.out.println("Vols amonestar un jugador local(1) o un jugador visitant(2)?");
                     int local = entradaTeclat.nextInt();
-
+                    entradaTeclat.nextLine();
                     if(local==1){
-                        amonestarJugador(partit,true);
+                        amonestarJugador(partit,true,entradaTeclat);
                     }else if(local==2){
-                        amonestarJugador(partit,false);
+                        amonestarJugador(partit,false,entradaTeclat);
                     }
                     break;
                 case 3:
@@ -52,6 +52,7 @@ public class Main {
 
             mostrarMenu();
             opcio = entradaTeclat.nextInt();
+            entradaTeclat.nextLine();
         }
         System.out.println("Fi del programa!"); //💔🥀
         System.exit(0);
@@ -155,17 +156,15 @@ public class Main {
     }
 
     // opcio 1, falta implementar i posar els arguments
-    private static void enviarMissatge(Partit p,boolean local) {
+    private static void enviarMissatge(Partit p,boolean local,Scanner sc) {
         System.out.println("Entra el missatge a enviar");
-        Scanner sc =  new Scanner(System.in);
         String missatge = sc.nextLine();
         p.enviarMissatge(local,missatge);
     }
 
     // opcio 2, falta implementar i posar els arguments
-    private static void amonestarJugador(Partit p,boolean local) { //
+    private static void amonestarJugador(Partit p,boolean local,Scanner sc) { //
         System.out.println("Entra el numFed del jugador a amonestar");
-        Scanner sc =  new Scanner(System.in);
         String numFed = sc.nextLine();
         System.out.println("Quin arbitre fica la falta (1 o 2)");
         int nArbitreFalta = sc.nextInt();
@@ -203,6 +202,62 @@ public class Main {
         String JugBanquillo = entradaTeclat.nextLine();
 
         p.intercanviarJugadors(equipSeleccionat, JugPartit, JugBanquillo);
+    }
+
+    private static Rol retornaRol(String nomRol){
+        Rol r = null;
+        nomRol = nomRol.toLowerCase();
+        switch (nomRol){
+            case "centrala":
+                r = new CentralA();
+                break;
+            case "centrald":
+                r = new CentralD();
+                break;
+            case "centraldretd":
+                r = new CentralDretD();
+                break;
+            case "centralesquerrad":
+                r = new CentralEsquerraD();
+                break;
+            case "extremdreta":
+                r = new ExtremDretA();
+                break;
+            case "extremdretd":
+                r = new ExtremDretD();
+                break;
+            case "extremesquerraa":
+                r = new ExtremEsquerraA();
+                break;
+            case "extremesquerrad":
+                r = new ExtremEsquerraD();
+                break;
+            case "lateraldreta":
+                r = new LateralDretA();
+                break;
+            case "lateraldretd":
+                r = new LateralDretD();
+                break;
+            case "lateralesquerraa":
+                r = new LateralEsquerraA();
+                break;
+            case "lateralesquerrad":
+                r = new LateralEsquerraD();
+                break;
+            case "pivota":
+                r = new PivotA();
+                break;
+            case "porter":
+                r = new Porter();
+                break;
+            case "avancatd":
+                r = new AvancatD();
+                break;
+            default:
+                System.out.println("Rol no reconegut: " + nomRol);
+                break;
+        }
+        return r;
     }
 }
 

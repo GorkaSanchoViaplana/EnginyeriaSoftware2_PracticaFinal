@@ -1,0 +1,20 @@
+Funcionament del programa;
+*- * sera el numero que s'entra
+1- Enviar missatge jugadors pista;
+    1-Enviar missatge al equip local
+    2-Enviar missatge al equip visitant
+        Text- El missatge a Enviar
+
+2-Amonestar un jugador
+    1-Amonestar un jugador Local
+    2-Amonestar un jugador Visitant
+        nJugador- Entrar el numero del jugador a sancionar (Si es incorrecte sortira un missatge que ho indica)
+            1-La sancio la fica el arbit 1
+            2-La sancio la fica el arbit 2
+//Tal i com funciona el programa, 2 faltes a un jugador el porten a la banqueta i deixa l'equip amb un jugador menys a la pista per tot el partit
+//Doncs, per a ficar una vermella i que el jugador ja no torni, tocara sancionar a un jugador que sigui a la banca
+3- Intercanviar jugadors
+    1-Intercanviar jugadors del equip local
+    2-Intercanviar jugadors del equip visitant
+        numJugador Pista - Entrar el numero del jugador que volem canviar que esta a la pista
+        numJugador Banc - Entrar el numero del jugador que volem canviar que esta al banc.

@@ -1,7 +1,6 @@
 import java.util.ArrayList;
-public class Partit implements SubjectPartit,ObserverPilota,ObserverArbitre {
+public class Partit {
     private Pilota pilotaPartit;
-    private ObserverPartit[] observerPartit;
     private ArrayList<Sancio> sancions;
     private Equip equipLocal;
     private Equip equipRemot;
@@ -13,7 +12,6 @@ public class Partit implements SubjectPartit,ObserverPilota,ObserverArbitre {
     private Partit(){
         this.pilotaPartit = new Pilota();
         this.sancions = new ArrayList<Sancio>(256); //Millor fer un arrayList de tamany n
-        this.observerPartit = new ObserverPartit[28]; //Ha d'haber mes, seran uns 30
         this.arbitres = new Arbitre[2]; //Sempre tindrem 2 arbits
         this.maxGrogues = 3;
     }
@@ -113,32 +111,6 @@ public class Partit implements SubjectPartit,ObserverPilota,ObserverArbitre {
             equipRemot.intercanviarJugadors(JugPartit,JugBanquillo);
             equipRemot.mostarJugadorsEquip();
         }
-    }
-
-
-    @Override
-    public void donaAlta(ObserverPartit o) {
-
-    }
-
-    @Override
-    public void donaBaixa(ObserverPartit o) { //Els observers sempre tindran numFed
-
-    }
-
-    @Override
-    public void notifica() { //Fem que sigui pull pq sino ens morim
-
-    }
-
-    @Override
-    public void actualitzaPilota(Posicio p) {
-
-    }
-
-    @Override
-    public void actualitzaArbitre(Posicio p) {
-
     }
 
 }

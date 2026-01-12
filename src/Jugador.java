@@ -9,6 +9,7 @@ public class Jugador extends Participants implements ObserverEntrenador {
     private float Pes;
     private float Alcada;
     private Boolean EstaExpulsat;
+    private Rol rolJugador;
     private float forca;
     private float precisioXut;
     private float HabilitatFintant;
@@ -22,8 +23,18 @@ public class Jugador extends Participants implements ObserverEntrenador {
         this.Nom = nom;
         this.Cognom = cognom;
         this.EstaExpulsat=false;
+        this.rolJugador=null; //Els jugadors del banc el tindran en null
     }
 
+    public void canviaRol(Rol rol){
+        this.rolJugador=rol;
+    }
+
+    public void ferRol(){
+        if(this.rolJugador!=null){
+            this.rolJugador.JugarRol();
+        }
+    }
     public void mostrarJugador(){
         System.out.println("Num Federacio: "+NumFed + " Nom: "+Nom + " "+Cognom);
     }
@@ -49,5 +60,9 @@ public class Jugador extends Participants implements ObserverEntrenador {
         if(o == null || getClass() != o.getClass()) return false;
         Jugador jugador = (Jugador) o;
         return NumFed.equals(jugador.NumFed);
+    }
+    @Override
+    public int hashCode() {
+        return NumFed != null ? NumFed.hashCode() : 0;
     }
 }
