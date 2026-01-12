@@ -206,50 +206,51 @@ public class Main {
 
     private static Rol retornaRol(String nomRol){
         Rol r = null;
+        nomRol = nomRol.toLowerCase();
         switch (nomRol){
-            case "CentralA":
+            case "centrala":
                 r = new CentralA();
                 break;
-            case "CentralD":
+            case "centrald":
                 r = new CentralD();
                 break;
-            case "CentralDretD":
+            case "centraldretd":
                 r = new CentralDretD();
                 break;
-            case "CentralEsquerraD":
+            case "centralesquerrad":
                 r = new CentralEsquerraD();
                 break;
-            case "ExtremDretA":
+            case "extremdreta":
                 r = new ExtremDretA();
                 break;
-            case "ExtremDretD":
+            case "extremdretd":
                 r = new ExtremDretD();
                 break;
-            case "ExtremEsquerraA":
+            case "extremesquerraa":
                 r = new ExtremEsquerraA();
                 break;
-            case "ExtremEsquerraD":
+            case "extremesquerrad":
                 r = new ExtremEsquerraD();
                 break;
-            case "LateralDretA":
+            case "lateraldreta":
                 r = new LateralDretA();
                 break;
-            case "LateralDretD":
+            case "lateraldretd":
                 r = new LateralDretD();
                 break;
-            case "LateralEsquerraA":
+            case "lateralesquerraa":
                 r = new LateralEsquerraA();
                 break;
-            case "LateralEsquerraD":
+            case "lateralesquerrad":
                 r = new LateralEsquerraD();
                 break;
-            case "PivotA":
+            case "pivota":
                 r = new PivotA();
                 break;
-            case "Porter":
+            case "porter":
                 r = new Porter();
                 break;
-            case "AvancatD":
+            case "avancatd":
                 r = new AvancatD();
                 break;
             default:
