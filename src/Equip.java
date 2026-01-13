@@ -104,8 +104,8 @@ public class Equip {
         return null;
     }
 
-    public void intercanviarJugadors(String jugPista, String jugBanquillo) {
-
+    public void intercanviarJugadors(String jugPista, String jugBanquillo,Rol r) {
+        Rol Br = new BanquilloRol();
         int posPista = cercarJugador(pista, jugPista);
         if (posPista == -1) {
             System.out.println("Jugador de la pista no trobat.");
@@ -126,12 +126,16 @@ public class Equip {
         // Intercanviar jugadors
         EntrenadorEquip.donaBaixa(pista[posPista]);
         EntrenadorEquip.donaAlta(banquillo[posBanquillo]);
-        
+
+        pista[posPista].canviaRol(Br);
+        banquillo[posBanquillo].canviaRol(r);
         Jugador temp = pista[posPista];
         pista[posPista] = banquillo[posBanquillo];
         banquillo[posBanquillo] = temp;
 
         System.out.println("Jugadors intercanviats correctament.");
+        pista[posPista].mostrarJugador();
+        pista[posPista].ferRol();
     }
 
     private int cercarJugador(Jugador[] array, String numFed) {

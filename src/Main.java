@@ -197,7 +197,7 @@ public class Main {
             equipSeleccionat = true;
             System.out.println("EQUIP LOCAL");
         } else if (selEquip == 2) {
-            equipSeleccionat = false;
+            equipSeleccionat = false; //redundant pero no te cost
             System.out.println("EQUIP VISITANT");
         } else System.out.println("Equip incorrecte");
 
@@ -209,7 +209,15 @@ public class Main {
         System.out.println("ENTRA UN JUGADOR DEL BANQUILLO:");
         String JugBanquillo = entradaTeclat.nextLine();
 
-        p.intercanviarJugadors(equipSeleccionat, JugPartit, JugBanquillo);
+        System.out.println("ENTRA EL ROL AMB EL QUE ENTRARA EL JUGADOR:");
+        String rol = entradaTeclat.nextLine();
+        Rol r = retornaRol(rol); //SI el rol es incorrecte retornara null
+        if(r != null){
+            p.intercanviarJugadors(equipSeleccionat, JugPartit, JugBanquillo,r);
+        }
+        else{
+            System.out.println("ROL INCORRECTE");
+        }
     }
 
     private static Rol retornaRol(String nomRol){

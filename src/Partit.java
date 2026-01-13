@@ -102,13 +102,13 @@ public class Partit {
             equipRemot.mostarJugadorsEquip();
         }
     }
-    public void intercanviarJugadors(boolean local, String JugPartit, String JugBanquillo)
+    public void intercanviarJugadors(boolean local, String JugPartit, String JugBanquillo,Rol r)
     {
         if(local){
-            equipLocal.intercanviarJugadors(JugPartit,JugBanquillo);
+            equipLocal.intercanviarJugadors(JugPartit,JugBanquillo,r);
             equipLocal.mostarJugadorsEquip();
         }else{
-            equipRemot.intercanviarJugadors(JugPartit,JugBanquillo);
+            equipRemot.intercanviarJugadors(JugPartit,JugBanquillo,r);
             equipRemot.mostarJugadorsEquip();
         }
     }

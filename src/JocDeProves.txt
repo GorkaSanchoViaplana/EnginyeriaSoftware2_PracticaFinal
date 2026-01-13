@@ -20,6 +20,7 @@ Han expulsat un jugador, vigileu no fer cap mes falta!
 2
 13
 20
+pivota
 1
 2
 Paseu la pilota al jugador que acaba d'entrar!

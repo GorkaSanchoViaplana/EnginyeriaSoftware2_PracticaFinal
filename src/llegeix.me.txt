@@ -18,3 +18,23 @@ Funcionament del programa;
     2-Intercanviar jugadors del equip visitant
         numJugador Pista - Entrar el numero del jugador que volem canviar que esta a la pista
         numJugador Banc - Entrar el numero del jugador que volem canviar que esta al banc.
+            RolJugador - Entrar el Rol amb el que el nou jugador entrara. Abaix es deixara una llista dels noms dels rols.
+                         No es important si s'entra amb alguna mayuscula o minuscula diferent.
+
+Llista Rols;
+    - centrala
+    - centrald
+    - centraldretd
+    - centralesquerrad
+    - extremdreta
+    - extremdretd
+    - extremesquerraa
+    - extremesquerrad
+    - lateraldreta
+    - lateraldretd
+    - lateralesquerraa
+    - lateralesquerrad
+    - pivota
+    - porter
+    - avancatd
+    - banquillo
